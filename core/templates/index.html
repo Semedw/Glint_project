@@ -55,7 +55,7 @@
                 <div class="service h-100">
                   <h3>{{ service.title }}</h3>
                   <p>{{ service.content|truncatechars:100 }}</p>
-                  <p><a href="#" class="readmore">Learn more</a></p>
+                  <p><a href="{% url 'services' service.slug %}" class="readmore">Learn more</a></p>
                 </div>
               </div>
               {% endfor %}

@@ -13,3 +13,12 @@ def home(request):
     }
 
     return render(request, 'index.html', context)
+
+
+def services(request, slug):
+    context = {
+        'services' : Service.objects.get(slug = slug),
+
+    }
+
+    return render(request, 'services.html', context)
