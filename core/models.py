@@ -1,5 +1,7 @@
 from django.db import models
 
+from core.utils.slug_title import generate_slug
+
 # Create your models here.
 
 class BaseModel(models.Model):
@@ -11,6 +13,7 @@ class Service(BaseModel):
     title = models.CharField(max_length = 255)
     content = models.TextField()
     price = models.FloatField(default=10.99)
+    slug = models.SlugField(null = True, blank = True)
 
     class Meta:
         verbose_name = 'Service'
@@ -18,6 +21,11 @@ class Service(BaseModel):
 
     def __str__(self):
         return self.title
+    
+
+    def save(self, *args, **kwargs):
+        self.slug = generate_slug(self.title)
+        super(Service, self).save(*args, **kwargs)
 
 class About(BaseModel):
     content = models.TextField()
@@ -53,6 +61,7 @@ class Project(BaseModel):
     developer_quote = models.TextField()
     developer_position = models.CharField(max_length = 255)
     developers_img = models.ImageField(null=True, blank=True,)
+    slug = models.SlugField(null = True, blank = True)
 
     class Meta:
         verbose_name = 'Project'
@@ -60,6 +69,10 @@ class Project(BaseModel):
 
     def __str__(self):
         return self.title
+    
+    def save(self, *args, **kwargs):
+        self.slug = generate_slug(self.title)
+        super(Project, self).save(*args, **kwargs)
 
 
 class Testimonials(BaseModel):
