@@ -39,6 +39,7 @@ class Team(BaseModel):
     name = models.CharField(max_length = 255)
     position = models.CharField(max_length = 255)
     content = models.TextField()
+    image = models.ImageField(null=True, blank=True)
     twitter = models.CharField(max_length = 500, null = True, blank = True)
     facebook = models.CharField(max_length = 500, null = True, blank = True)
     github = models.CharField(max_length = 500, null = True, blank = True)
