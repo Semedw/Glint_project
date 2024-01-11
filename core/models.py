@@ -63,6 +63,7 @@ class Project(BaseModel):
     developer_position = models.CharField(max_length = 255)
     developers_img = models.ImageField(null=True, blank=True,)
     slug = models.SlugField(null = True, blank = True)
+    link = models.CharField(max_length = 1000, default='https://youtube.com/')
 
     class Meta:
         verbose_name = 'Project'
@@ -96,6 +97,8 @@ class Gallery(BaseModel):
         verbose_name = 'Gallery'
         verbose_name_plural = 'Gallery'
 
+    def __str__(self):
+        return self.image.url
 
 class Contact(BaseModel):
     first_name = models.CharField(max_length = 255)
