@@ -17,12 +17,13 @@ def home(request):
 
 
     context = {
-        'about' : About.objects.first().content,
         'services' : Service.objects.all(),
         'projects' : Project.objects.all(),
         'team' : Team.objects.all(),
         'gallery' : Gallery.objects.all(),
-        'forms' : form
+        'forms' : form,
+        'testimonials' : Testimonials.objects.all(),
+
 
     }
 

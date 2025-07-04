@@ -81,6 +81,7 @@ class Testimonials(BaseModel):
     name = models.CharField(max_length = 255)
     job = models.CharField(max_length = 255)
     quote = models.TextField()
+    image = models.ImageField(null=True, blank=True)
 
     class Meta:
         verbose_name = 'Testiomonial'

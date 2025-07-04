@@ -7,10 +7,10 @@ class ContactForm(forms.ModelForm):
 
     class Meta:
         model = Contact
-        fields = "__all__"
+        fields = ('first_name', 'last_name', 'email', 'message')
         widgets = {
             'first_name' : forms.TextInput(attrs={'class' : 'form-control', 'placeholder' : 'First Name' }),
             'last_name' : forms.TextInput(attrs={'class' : 'form-control', 'placeholder' : 'Last Name' }),
             'email' : forms.TextInput(attrs={'class' : 'form-control', 'placeholder' : 'E-mail' }),
-            'message' : forms.TextInput(attrs={'class' : 'form-control', 'placeholder' : 'Message' }),
+            'message' : forms.Textarea(attrs={'class' : 'form-control', 'placeholder' : 'Message' }),
         }

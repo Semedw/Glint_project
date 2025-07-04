@@ -113,7 +113,7 @@
           <div class="col-lg-5 ml-auto section-title">
             <span class="sub-title mb-2 d-block">Acquaint Us</span>
             <h2 class="title text-primary mb-3">About us</h2>
-            <p class="mb-4">{{ about }}</p>
+            <p class="mb-4">{{ about.content }}</p>
 
 
             <div class="d-flex">
@@ -298,23 +298,25 @@
           </div>
         </div>
         <div class="row">
+          {% for testimonial in testimonials|slice:":2" %}
           <div class="col-lg-6 mb-4">
             <div class="testimonial bg-white h-100">
               <blockquote class="mb-3">
-                <p>&ldquo;Far far away, behind the word mountains, <strong>far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</strong> right at the coast of the Semantics, a large language ocean.&rdquo;</p>
+                <p>{{ testimonial.quote }}</p>
               </blockquote>
               <div class="d-flex align-items-center vcard">
                 <figure class="mb-0 mr-3">
-                  <img src="{% static 'images/person_3.jpg' %}" alt="Free website template by Free-Template.co" class="img-fluid ounded-circle">
+                  <img src="{{ testimonial.image.url }}" alt="Free website template by Free-Template.co" class="img-fluid ounded-circle">
                 </figure>
                 <div class="vcard-text">
-                  <span class="d-block">Jacob Spencer</span>
-                  <span class="position">Web Designer</span>
+                  <span class="d-block">{{ testimonial.name }}</span>
+                  <span class="position">{{ testimonial.job }}</span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-6 mb-4">
+          {% endfor %}
+          <!-- <div class="col-lg-6 mb-4">
             <div class="testimonial bg-white h-100">
               <blockquote class="mb-3">
                 <p>&ldquo;A small river named Duden <strong>flows by their place and supplies it with the necessary regelialia</strong>. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.&rdquo;</p>
@@ -329,9 +331,9 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
-          <div class="col-lg-6 mb-4">
+          <!-- <div class="col-lg-6 mb-4">
             <div class="testimonial bg-white h-100">
               <blockquote class="mb-3">
                 <p>&ldquo;A small river named Duden <strong>flows by their place and supplies it with the necessary regelialia</strong>. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.&rdquo;</p>
@@ -363,7 +365,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
